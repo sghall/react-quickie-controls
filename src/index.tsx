@@ -1,11 +1,11 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { CompactPicker, ColorResult } from 'react-color';
-import Select, { OptionsType } from 'react-select';
+import Select, { OptionsType, ValueType } from 'react-select';
 import { ValueSlider } from './Slider';
 
 const theme = {
-  text: '#333',
+  text: '#555',
   background: '#fff',
   border: '1px solid #eee',
 };
@@ -14,7 +14,7 @@ const controlsId = 'react-quickie-controls-root';
 const controlsClass = 'react-quickie-control';
 
 const textStyles = {
-  fontSize: '0.7rem',
+  fontSize: '12px',
   fontFamily: 'Arial, Helvetica, Sans-Serif',
 };
 
@@ -57,6 +57,7 @@ function useControlsRoot() {
     controlsContainer.style.borderRadius = '4px';
     controlsContainer.style.width = '100%';
     controlsContainer.style.position = 'absolute';
+    controlsContainer.style.boxShadow = ' 0 8px 6px -6px #ccc';
     controlsRoot.appendChild(controlsContainer);
 
     button.addEventListener('click', () => {
@@ -176,8 +177,8 @@ export function useColorPicker(label: string, hex: string) {
   return color;
 }
 
-export function useSelectControl(label: string, options: OptionsType<any>) {
-  const [option, setOption] = useState(options[0]);
+export function useSelectControl<T>(label: string, options: OptionsType<T>) {
+  const [option, setOption] = useState<ValueType<T>>(options[0]);
   const controlsRoot = useControlsRoot();
 
   useEffect(() => {
@@ -190,7 +191,7 @@ export function useSelectControl(label: string, options: OptionsType<any>) {
     selectContainer.classList.add(controlsClass);
     container[0].appendChild(selectContainer);
 
-    function updateOption(value: any) {
+    function updateOption(value: ValueType<T>) {
       setOption(value);
     }
 
@@ -203,8 +204,7 @@ export function useSelectControl(label: string, options: OptionsType<any>) {
           return {
             ...provided,
             ...textStyles,
-            fontSize: '16px',
-            fontWeight: 300,
+            fontSize: '12px',
           };
         },
       };
@@ -225,14 +225,6 @@ export function useSelectControl(label: string, options: OptionsType<any>) {
             defaultValue={option}
             onChange={updateOption}
             options={options}
-            theme={theme => ({
-              ...theme,
-              colors: {
-                ...theme.colors,
-                primary25: '#eee',
-                primary: 'rgb(155,155,155)',
-              },
-            })}
           />
         </div>
       );
@@ -252,5 +244,5 @@ export function useSelectControl(label: string, options: OptionsType<any>) {
     };
   }, [controlsRoot, label]);
 
-  return option.value;
+  return option as T;
 }

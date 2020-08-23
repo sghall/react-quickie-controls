@@ -1,5 +1,5 @@
 import React from 'react';
-import { useValueSlider, useColorPicker } from '../src';
+import { useValueSlider, useColorPicker, useSelectControl } from '../src';
 
 export default {
   title: 'Demos',
@@ -45,4 +45,39 @@ export const colorPicker = () => {
 
 colorPicker.story = {
   name: 'Color Picker',
+};
+
+type OptionType = {
+  value: number;
+  label: string;
+};
+
+export const selectDemo = () => {
+  const pizza1 = useSelectControl<OptionType>('Pizza Size 1: ', [
+    { value: 20, label: 'sm' },
+    { value: 30, label: 'md' },
+    { value: 30, label: 'lg' },
+  ]);
+  const pizza2 = useSelectControl<OptionType>('Pizza Size 2: ', [
+    { value: 20, label: 'sm' },
+    { value: 30, label: 'md' },
+    { value: 30, label: 'lg' },
+  ]);
+  const pizza3 = useSelectControl<OptionType>('Pizza Size 3: ', [
+    { value: 20, label: 'sm' },
+    { value: 30, label: 'md' },
+    { value: 30, label: 'lg' },
+  ]);
+
+  return (
+    <div>
+      <div>Pizza 1: {pizza1.label}</div>
+      <div>Pizza 2: {pizza2.label}</div>
+      <div>Pizza 3: {pizza3.label}</div>
+    </div>
+  );
+};
+
+selectDemo.story = {
+  name: 'Select Demo',
 };
