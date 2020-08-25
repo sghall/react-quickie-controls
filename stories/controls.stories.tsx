@@ -88,7 +88,7 @@ type MyOptionType = {
 };
 
 export const kitchenSink = () => {
-  const text = useSelectControl<MyOptionType>('Pizza Size 1: ', [
+  const text = useSelectControl<MyOptionType>('Select Control: ', [
     { value: () => 'Option 1', label: 'The First Option' },
     { value: () => 'Option 2', label: 'The Second Option' },
     { value: () => 'Option 3', label: 'The Third Option' },
