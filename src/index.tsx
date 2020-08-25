@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { CompactPicker, ColorResult } from 'react-color';
-import Select, { OptionsType, ValueType } from 'react-select';
+import Select, { OptionsType, ValueType, Styles } from 'react-select';
 import { ValueSlider } from './Slider';
 
 const theme = {
@@ -205,7 +205,7 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
     }
 
     function SelectControlApp() {
-      const customStyles = {
+      const customStyles: Partial<Styles> = {
         control: (provided: React.CSSProperties) => {
           return {
             ...provided,
@@ -222,7 +222,24 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
           };
         },
         menu: (provided: React.CSSProperties) => {
-          return { ...provided, zIndex: 50010 };
+          return { ...provided, marginTop: 2, zIndex: 50010 };
+        },
+        option: () => {
+          return {
+            cursor: 'pointer',
+            label: 'option',
+            backgroundColor: 'transparent',
+            color: 'inherit',
+            display: 'block',
+            fontSize: 'inherit',
+            padding: '8px 12px',
+            width: '100%',
+            userSelect: 'none',
+            '&:hover': {
+              backgroundColor: '#ccc',
+              color: '#fff',
+            },
+          };
         },
         container: (provided: React.CSSProperties) => {
           return {
@@ -233,7 +250,7 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
       };
 
       return (
-        <div style={{ padding: '10px 0px 2px' }}>
+        <div style={{ padding: '10px 2px 2px' }}>
           <div
             style={{
               paddingLeft: 15,
