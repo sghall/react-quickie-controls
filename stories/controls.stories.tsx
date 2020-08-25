@@ -81,3 +81,40 @@ export const selectDemo = () => {
 selectDemo.story = {
   name: 'Select Demo',
 };
+
+type MyOptionType = {
+  value: () => string; // could be whatever
+  label: string;
+};
+
+export const kitchenSink = () => {
+  const text = useSelectControl<MyOptionType>('Pizza Size 1: ', [
+    { value: () => 'Option 1', label: 'The First Option' },
+    { value: () => 'Option 2', label: 'The Second Option' },
+    { value: () => 'Option 3', label: 'The Third Option' },
+  ]);
+
+  const width = useValueSlider('Width: ', 100, 50, 300, 10);
+  const height = useValueSlider('Height: ', 100, 50, 300, 10);
+
+  const backgroundColor = useColorPicker('Background Color: ', '#0000ff');
+  const border = useColorPicker('Border Color: ', '#ccc');
+
+  return (
+    <div
+      style={{
+        width,
+        height,
+        color: '#fff',
+        backgroundColor,
+        border: `2px solid ${border}`,
+      }}
+    >
+      {text.value()}
+    </div>
+  );
+};
+
+kitchenSink.story = {
+  name: 'Kitchen Sink',
+};
