@@ -7,7 +7,7 @@ import { ValueSlider } from './Slider';
 const theme = {
   text: '#555',
   background: '#fff',
-  border: '1px solid #eee',
+  border: '1px solid #ccc',
 };
 
 const controlsId = 'react-quickie-controls-root';
@@ -28,7 +28,7 @@ function useControlsRoot() {
 
     const controlsRoot = document.createElement('div');
     controlsRoot.setAttribute('id', controlsId);
-    controlsRoot.style.width = '230px';
+    controlsRoot.style.width = '257px';
     controlsRoot.style.backgroundColor = theme.background;
     controlsRoot.style.position = 'fixed';
     controlsRoot.style.top = '0';
@@ -54,7 +54,9 @@ function useControlsRoot() {
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('container');
     controlsContainer.style.backgroundColor = theme.background;
-    controlsContainer.style.borderRadius = '4px';
+    controlsContainer.style.borderRadius = '2px';
+    controlsContainer.style.boxSizing = 'border-box';
+    controlsContainer.style.border = theme.border;
     controlsContainer.style.width = '100%';
     controlsContainer.style.position = 'absolute';
     controlsContainer.style.boxShadow = ' 0 8px 6px -6px #ccc';
@@ -145,6 +147,13 @@ export function useColorPicker(label: string, hex: string) {
     }
 
     function ColorPickerApp() {
+      const [pickerColor, setPickerColor] = useState(color);
+
+      function onPickerChange(color: ColorResult) {
+        setPickerColor(color.hex);
+        updateColor(color);
+      }
+
       return (
         <div style={{ padding: 5 }}>
           <div
@@ -155,7 +164,7 @@ export function useColorPicker(label: string, hex: string) {
           >
             {label}
           </div>
-          <CompactPicker color={color} onChangeComplete={updateColor} />
+          <CompactPicker color={pickerColor} onChange={onPickerChange} />
         </div>
       );
     }
@@ -197,6 +206,21 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
 
     function SelectControlApp() {
       const customStyles = {
+        control: (provided: React.CSSProperties) => {
+          return {
+            ...provided,
+            boxShadow: 'none',
+            borderColor: '#ccc',
+            cursor: 'pointer',
+            '&:hover': {
+              borderColor: '#ccc',
+            },
+            '&:focus': {
+              outline: 'none',
+            },
+            outline: 'none',
+          };
+        },
         menu: (provided: React.CSSProperties) => {
           return { ...provided, zIndex: 50010 };
         },
@@ -204,13 +228,12 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
           return {
             ...provided,
             ...textStyles,
-            fontSize: '12px',
           };
         },
       };
 
       return (
-        <div style={{ padding: 2 }}>
+        <div style={{ padding: '10px 0px 2px' }}>
           <div
             style={{
               paddingLeft: 15,

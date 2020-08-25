@@ -64,7 +64,7 @@ const handleStyle: {
     height: 12,
     transform: 'translate(-50%, -50%)',
     borderRadius: '50%',
-    backgroundColor: '#009a9a',
+    backgroundColor: '#ccc',
     position: 'absolute',
     WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   },
@@ -89,7 +89,7 @@ export function Handle({
   let boxShadow = 'none';
 
   if (activeHandleID === id) {
-    boxShadow = '0px 0px 0px 16px rgba(0, 205, 205, 0.2)';
+    boxShadow = '0px 0px 0px 16px rgba(205, 205, 205, 0.3)';
   }
 
   return (
