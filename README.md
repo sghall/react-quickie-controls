@@ -1,16 +1,16 @@
 # React Quickie Controls
 
-<div style="text-align:center;">
-  <a href="https://github.com/sghall/react-move" target="\_parent"><img src="https://user-images.githubusercontent.com/4615775/91217598-9c680100-e6cc-11ea-92e9-04c011222876.gif" alt="react-quickie-controls"/></a>
-</div>
-
 Make quick controls to use for development or in storybooks. A test control can be added to your app or component by just importing this library and adding a single line to your code. You can append more controls to the same instance and experiment with different values for numbers, strings and colors. They can be in multiple places anywhere in the tree. When the hook unmounts that control will be removed from the list and any others will continue to work.
-
-**note:** This is a beta project and is only is only being used in a couple of places. Since it's only for development stuff it's relatively safe to put it out there for others to try out. Please don't put this in your app.
 
 ```
 npm install react-quickie-controls
 ```
+
+<div style="text-align:center;">
+  <a href="https://github.com/sghall/react-move" target="\_parent"><img src="https://user-images.githubusercontent.com/4615775/91217598-9c680100-e6cc-11ea-92e9-04c011222876.gif" alt="react-quickie-controls"/></a>
+</div>
+
+**note:** This is a beta project and is only is only being used in a couple of places. Since it's only for development stuff it's relatively safe to put it out there for others to try out. Please don't put this in your app.
 
 For example, if you wanted to quickly be able to change a number to different values between 1 and 100 you could just do the following...
 
