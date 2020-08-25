@@ -49,6 +49,7 @@ function useControlsRoot() {
     button.style.webkitTapHighlightColor = 'transparent';
     button.style.zIndex = '10005';
     button.style.fontFamily = textStyles.fontFamily;
+    button.style.fontSize = '14px';
     button.innerHTML = 'Show/Hide Controls';
     controlsRoot.appendChild(button);
 
