@@ -15,7 +15,7 @@ const controlsClass = 'react-quickie-control';
 
 const textStyles = {
   fontSize: '12px',
-  fontFamily: 'Arial, Helvetica, Sans-Serif',
+  fontFamily: 'Arial, Helvetica, sans-serif',
 };
 
 function useControlsRoot() {
@@ -48,6 +48,7 @@ function useControlsRoot() {
     button.style.userSelect = 'none';
     button.style.webkitTapHighlightColor = 'transparent';
     button.style.zIndex = '10005';
+    button.style.fontFamily = textStyles.fontFamily;
     button.innerHTML = 'Show/Hide Controls';
     controlsRoot.appendChild(button);
 
