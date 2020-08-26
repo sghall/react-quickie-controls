@@ -235,7 +235,7 @@ export function useSelectControl<T>(label: string, options: OptionsType<T>) {
             display: 'block',
             fontSize: 'inherit',
             padding: '8px 12px',
-            width: '100%',
+            width: 225,
             userSelect: 'none',
             '&:hover': {
               backgroundColor: '#ccc',
