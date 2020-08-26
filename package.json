@@ -6,6 +6,19 @@
   "files": [
     "dist"
   ],
+  "description": "Quick development controls for React projects. Change values and colors quickly in your development environment or storybooks.",
+  "repository": "git+https://github.com/sghall/react-quickie-controls.git",
+  "keywords": [
+    "react",
+    "development",
+    "controls",
+    "dat.gui",
+    "value",
+    "slider",
+    "select",
+    "color",
+    "picker"
+  ],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
