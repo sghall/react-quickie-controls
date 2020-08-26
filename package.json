@@ -10,6 +10,7 @@
   "repository": "git+https://github.com/sghall/react-quickie-controls.git",
   "keywords": [
     "react",
+    "hooks",
     "development",
     "controls",
     "dat.gui",
