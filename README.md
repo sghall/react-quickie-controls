@@ -2,6 +2,8 @@
 
 Make quick controls to use for development or in storybooks. A test control can be added to your app or component by just importing this library and adding a single line to your code. You can append more controls to the same instance and experiment with different values for numbers, strings and colors. They can be in multiple places anywhere in the tree. When the hook unmounts that control will be removed from the list and any others will continue to work.
 
+## [Examples](https://react-quickie-controls.netlify.app)
+
 ```
 npm install react-quickie-controls
 ```
@@ -20,7 +22,7 @@ import { useValueSlider } from 'react-quickie-controls';
 const MyComponent = () => {
   // this will render a value slider in the upper right of the screen
   // changing the slider value will cause this component to update
-  const x = useValueSlider('X Value:', 10, 1, 100, 0.5); // (label, value, min, max, step?)
+  const x = useValueSlider('X Value:', 10, 1, 100, 0.5); // (label, value, min?, max?, step?)
 
   return <div>The X Value: {x}</div>;
 };
